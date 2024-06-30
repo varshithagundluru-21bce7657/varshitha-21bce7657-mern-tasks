@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Left to Right Animation</title>
+    <style>
+        #box {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            animation: move 5s linear infinite paused; /* Add animation here */
+        }
+
+        @keyframes move {
+            from { left: 0; }
+            to { left: calc(100% - 50px); } /* Subtract the width of the box */
+        }
+
+        .button {
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="./train.png" alt="">
+    </div>
+    <div class="button">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+    </div>
+    <script>
+        const startButton = document.getElementById('start');
+        const stopButton = document.getElementById('stop');
+        const box = document.getElementById('box');
+
+        startButton.addEventListener('click', () => {
+            box.style.animationPlayState = 'running';
+        });
+
+        stopButton.addEventListener('click', () => {
+            box.style.animationPlayState = 'paused';
+        });
+    </script>
+</body>
+</html>
